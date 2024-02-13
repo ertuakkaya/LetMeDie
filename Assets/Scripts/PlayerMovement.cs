@@ -1,39 +1,69 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using System.Collections;
+using Unity.VisualScripting;
 
 public class PlayerMovement : MonoBehaviour
 {
-    [SerializeField] private float moveSpeed;
-    [SerializeField] private float turnSpeed;
-    [SerializeField] private float jumpForce;
+    public float speed = 5f; // Regular movement speed
+    public float dashSpeed = 10f; // Speed of the dash
+    public float dashDuration = 0.2f; // Duration of the dash
+    private bool isDashing = false; // Flag to check if player is dashing
 
     private Rigidbody rb;
 
+    private float moveHorizontal = 0;
+    private float moveVertical = 0;
+    
+    
     void Start()
     {
         rb = GetComponent<Rigidbody>();
     }
 
-    // Update is called once per frame
-    void FixedUpdate()
+    void Update()
     {
-        float horizontalInput = Input.GetAxis("Horizontal");
-        float verticalInput = Input.GetAxis("Vertical");
+        moveHorizontal = Input.GetAxis("Horizontal");
+        moveVertical = Input.GetAxis("Vertical");
+        
+        PlayerMoveNDash();
+    }
 
-        Vector3 moveDirection = (Camera.main.transform.forward * verticalInput) + (Camera.main.transform.right * horizontalInput);
-        moveDirection.y = 0;
+    private void PlayerMoveNDash()
+    {
+        if (moveHorizontal == 0 && moveVertical == 0) return;
+        
+        
+        // Calculate movement direction
+        Vector3 movement = new Vector3(moveHorizontal, 0.0f, moveVertical);
+        movement = movement.normalized * speed * Time.deltaTime;
 
-        rb.velocity = moveDirection * moveSpeed;
-
-        Quaternion targetRotation = Quaternion.LookRotation(moveDirection);
-
-        rb.MoveRotation(Quaternion.Slerp(rb.rotation, targetRotation, turnSpeed * Time.deltaTime));
-
-        if (Input.GetKeyDown(KeyCode.Space))
+        // If dash button is pressed and player is not already dashing
+        if (Input.GetKeyDown(KeyCode.LeftShift) && !isDashing)
         {
-            rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+            StartCoroutine(Dash());
         }
+
+        // Apply movement
+        rb.MovePosition(transform.position + movement);
+        rb.MoveRotation(Quaternion.LookRotation(movement)); // Rotate player to face movement direction
+    }
+    
+    
+    IEnumerator Dash()
+    {
+        // Set dashing flag to true
+        isDashing = true;
+
+        // Set the speed to dash speed
+        speed = dashSpeed;
+
+        // Wait for dash duration
+        yield return new WaitForSeconds(dashDuration);
+
+        // Reset speed to normal after dash is finished
+        speed = 5f;
+
+        // Reset dashing flag
+        isDashing = false;
     }
 }
