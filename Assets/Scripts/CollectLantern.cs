@@ -7,12 +7,13 @@ public class CollectLantern : MonoBehaviour
 {
     
     [SerializeField] private bool isLanterCollected = false;
+    [SerializeField] private bool isLanterNear = false;
     public Canvas lanternCanvas;
     
     // Start is called before the first frame update
     void Start()
     {
-        lanternCanvas.gameObject.SetActive(false);
+        lanternCanvas.GetComponent<Canvas>().enabled = false;
     }
 
     // Update is called once per frame
@@ -21,20 +22,36 @@ public class CollectLantern : MonoBehaviour
         
     }
     
-    
+    private void CheckPlayerNear()
+    {
+        if (isLanterNear)
+        {
+            lanternCanvas.GetComponent<Canvas>().enabled = true;
+        }
+        else
+        {
+            lanternCanvas.GetComponent<Canvas>().enabled = false;
+        }
+    }
     
     private void OnCollisionEnter(Collision other)
     {
+        //if (!other.gameObject.CompareTag("Player") ) 
+        
         if (other.gameObject.CompareTag("Player"))
         {
-            lanternCanvas.gameObject.SetActive(true);
+            lanternCanvas.GetComponent<Canvas>().enabled = true;
             if (Input.GetKeyDown(KeyCode.E) && !isLanterCollected)
             {
                 isLanterCollected = true;
-                lanternCanvas.gameObject.SetActive(false);
-                Destroy(gameObject); //lantern is collected and destroyed 
+                lanternCanvas.GetComponent<Canvas>().enabled = false;
+                //Destroy(gameObject); //lantern is collected and destroyed 
             }
             
+        }
+        else
+        {
+            lanternCanvas.GetComponent<Canvas>().enabled = false;
         }
     }
 }
