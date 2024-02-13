@@ -6,6 +6,10 @@ using UnityEngine;
 public class CollectLantern : MonoBehaviour
 {
     
+    // when player is near the lantern, show the canvas
+    // when player press E, collect the lantern and destroy it
+    
+    
     [SerializeField] private bool isLanterCollected = false;
     [SerializeField] private bool isLanterNear = false;
     public Canvas lanternCanvas;
