@@ -12,7 +12,7 @@ public class CameraFollow : MonoBehaviour
         offset = transform.position - playerTransform.position;
     }
 
-    void LateUpdate()
+    void FixedUpdate()
     {
         // Update the camera's position to follow the player, without changing rotation.
         Vector3 desiredPosition = playerTransform.position + offset;
