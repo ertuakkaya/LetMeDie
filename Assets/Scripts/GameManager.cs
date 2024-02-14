@@ -28,4 +28,14 @@ public class GameManager : MonoBehaviour
             counter = 5f;
         }
     }
+
+    public void EndTheLevel()
+    {
+        var bcon = BloodController.Instance;
+        bcon.KillCharacter();
+        if (!( bcon.IsAlive() ) && !( bcon.IsFrozen() ) )
+        {
+            //TODO : Oyunu Kazandý.
+        }
+    }
 }
