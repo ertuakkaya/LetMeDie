@@ -4,7 +4,7 @@ using Unity.VisualScripting;
 
 public class PlayerMovement : MonoBehaviour
 {
-    public float speed = 5f; // Regular movement speed
+    public float speed = 50f; // Regular movement speed
     public float dashSpeed = 10f; // Speed of the dash
     public float dashDuration = 0.2f; // Duration of the dash
     private bool isDashing = false; // Flag to check if player is dashing
@@ -20,7 +20,7 @@ public class PlayerMovement : MonoBehaviour
         rb = GetComponent<Rigidbody>();
     }
 
-    void Update()
+    void FixedUpdate()
     {
         moveHorizontal = Input.GetAxis("Horizontal");
         moveVertical = Input.GetAxis("Vertical");
@@ -61,7 +61,7 @@ public class PlayerMovement : MonoBehaviour
         yield return new WaitForSeconds(dashDuration);
 
         // Reset speed to normal after dash is finished
-        speed = 5f;
+        speed = 13f;
 
         // Reset dashing flag
         isDashing = false;
