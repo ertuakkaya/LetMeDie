@@ -7,7 +7,10 @@ public class PlayerMovement : MonoBehaviour
     public float speed = 5.5f; 
     public float dashSpeed = 10f;  
     public float dashDuration = 0.2f;  
-    private bool isDashing = false;  
+    private bool isDashing = false;
+
+    [SerializeField] public ParticleSystem dashEffect;
+    [SerializeField] public ParticleSystem dashEffect1;
 
     private Rigidbody rb;
     
@@ -19,7 +22,8 @@ public class PlayerMovement : MonoBehaviour
     
     void Start()
     {
-        rb = GetComponent<Rigidbody>(); 
+        rb = GetComponent<Rigidbody>();
+        dashEffect.Stop();
     }
 
     void FixedUpdate()
@@ -29,7 +33,12 @@ public class PlayerMovement : MonoBehaviour
         if (!(moveHorizontal == 0 && moveVertical == 0))
             MoveThePlayer();
         if (Input.GetKeyDown(KeyCode.LeftShift) && !isDashing)
-            StartCoroutine(Dash()); 
+            StartCoroutine(Dash());
+        if (!isDashing)
+        {
+            dashEffect.Stop();
+            dashEffect1.Stop();
+        }
     }
 
     private void MoveThePlayer()
@@ -49,6 +58,8 @@ public class PlayerMovement : MonoBehaviour
         // Set dashing flag to true
         isDashing = true;
 
+        Vector3 startPosition = transform.position;
+
         // Set the speed to dash speed
         speed = dashSpeed;
 
@@ -60,5 +71,10 @@ public class PlayerMovement : MonoBehaviour
 
         // Reset dashing flag
         isDashing = false;
+
+        dashEffect.Play();
+        dashEffect1.Play();
+
+        dashEffect.transform.position = startPosition;
     }
 }
