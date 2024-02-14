@@ -6,6 +6,7 @@ using UnityEngine;
 public class CollectLantern : MonoBehaviour
 {
     [SerializeField] private GameObject player;
+    [SerializedField] private Light lightTop;
     
     // when player is near the lantern, show the canvas
     // when player press E, collect the lantern and destroy it
@@ -21,6 +22,7 @@ public class CollectLantern : MonoBehaviour
     {
         player.GetComponent<Light>().enabled = false;
         lanternCanvas.GetComponent<Canvas>().enabled = false;
+        lightTop.GetComponent<Light>().enabled = false;
     }
 
     // Update is called once per frame
@@ -36,6 +38,7 @@ public class CollectLantern : MonoBehaviour
         if (!isLanterCollected) return;
         player.GetComponent<Light>().enabled = true;
         isLanterCollected = true;
+        lightTop.GetComponent<Light>().enabled = true;
         Debug.Log("Lantern is collected and added to the player's light component.");
     }
 
