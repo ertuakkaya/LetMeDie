@@ -4,5 +4,17 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/Dilara.unity
+    guid: 029110aaabc4d2e4db7d4269e285ee85
+  - enabled: 1
+    path: Assets/Scenes/Ertugrul.unity
+    guid: 9fc0d4010bbf28b4594072e72b8655ab
+  - enabled: 1
+    path: Assets/Scenes/Ibrahim.unity
+    guid: 91667636ceaf67049a628a82fa773443
+  - enabled: 1
+    path: Assets/Scenes/Semih.unity
+    guid: a6497829cf744424c87b765da09ac399
   m_configObjects: {}
