@@ -200,9 +200,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a5f76d03321d92439c892d1b0ad8323, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 10
-  turnSpeed: 3
-  jumpForce: 10
+  speed: 5.5
+  dashSpeed: 10
+  dashDuration: 0.2
 --- !u!23 &110024069
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -616,6 +616,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 110024064}
+  counter: 5
 --- !u!1 &1551076234
 GameObject:
   m_ObjectHideFlags: 0
