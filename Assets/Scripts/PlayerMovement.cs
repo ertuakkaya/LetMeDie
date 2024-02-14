@@ -10,6 +10,8 @@ public class PlayerMovement : MonoBehaviour
     private bool isDashing = false; // Flag to check if player is dashing
 
     private Rigidbody rb;
+    
+    public Light lanternLight;
 
     private float moveHorizontal = 0;
     private float moveVertical = 0;
@@ -18,6 +20,7 @@ public class PlayerMovement : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        
     }
 
     void FixedUpdate()
