@@ -1,17 +1,16 @@
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
-{
-    public GameObject player;
+{ 
+    public float counter = 5f;
     private BloodController bloodController;
-    public float counter = 5f; 
 
-    void Start()
-    {
-        bloodController = player.GetComponent<BloodController>();
+    private void Start()
+    { 
+        bloodController = BloodController.Instance;
     }
-     
-    void FixedUpdate()
+
+    private void FixedUpdate()
     {
         PeridocialBloodDecrease();
     }
