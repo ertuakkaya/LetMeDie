@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Security.Cryptography;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -7,6 +8,17 @@ public class Main_menu : MonoBehaviour
 {
     public Canvas SettingsMenuCanvas;
     public Canvas MainMenuCanvas;
+    private AudioSource musicSource;
+
+    void Start()
+    {
+        musicSource = FindObjectOfType<AudioSource>();
+        // Müzik çalmaya baþla
+        musicSource.Play();
+    }
+
+
+
     public void PlayButton()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
@@ -26,5 +38,14 @@ public class Main_menu : MonoBehaviour
     {
         Application.Quit();
     }
-
+    public void StopMusic()
+    {
+        // Müziði durdur
+        musicSource.Stop();
+    }
+    public void StartMusic()
+    {
+        // Müziði tekrar çalmaya baþla
+        musicSource.Play();
+    }
 }
