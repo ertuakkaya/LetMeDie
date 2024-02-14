@@ -26,25 +26,17 @@ public class CollectLantern : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        LanternIntensity(); // lantern intensity is changing over time when it is collected // it is not working properly
     }
     
-    private void CheckPlayerNear()
-    {
-        if (isLanterNear)
-        {
-            lanternCanvas.GetComponent<Canvas>().enabled = true;
-        }
-        else
-        {
-            lanternCanvas.GetComponent<Canvas>().enabled = false;
-        }
-    }
+    
     
     private void CheckLanterCollected()
     {
         if (!isLanterCollected) return;
         player.GetComponent<Light>().enabled = true;
+        isLanterCollected = true;
+        Debug.Log("Lantern is collected and added to the player's light component.");
     }
 
     private void OnTriggerStay(Collider other)
@@ -58,7 +50,9 @@ public class CollectLantern : MonoBehaviour
                 isLanterCollected = true;
                 CheckLanterCollected();
                 lanternCanvas.GetComponent<Canvas>().enabled = false;
-                Destroy(gameObject); //lantern is collected and destroyed 
+                UnVisLantern();
+                
+                
                 
                 
                 // it has to be added a light to the player
@@ -74,5 +68,17 @@ public class CollectLantern : MonoBehaviour
             lanternCanvas.GetComponent<Canvas>().enabled = false;
             showCanvas = false;
         }
+    }
+
+    private void UnVisLantern()
+    {
+        gameObject.GetComponent<MeshRenderer>().enabled = false;
+        gameObject.gameObject.GetComponent<BoxCollider>().enabled = false;
+    }
+    
+    private void LanternIntensity()
+    {
+        if (!isLanterCollected) return;
+        player.GetComponent<Light>().intensity = Mathf.PingPong(Time.time,13);
     }
 }
