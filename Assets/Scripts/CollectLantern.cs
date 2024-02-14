@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class CollectLantern : MonoBehaviour
 {
+    [SerializeField] private GameObject player;
     
     // when player is near the lantern, show the canvas
     // when player press E, collect the lantern and destroy it
@@ -18,6 +19,7 @@ public class CollectLantern : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        player.GetComponent<Light>().enabled = false;
         lanternCanvas.GetComponent<Canvas>().enabled = false;
     }
 
@@ -39,10 +41,14 @@ public class CollectLantern : MonoBehaviour
         }
     }
     
-    private void OnCollisionEnter(Collision other)
+    private void CheckLanterCollected()
     {
-        
-        
+        if (!isLanterCollected) return;
+        player.GetComponent<Light>().enabled = true;
+    }
+
+    private void OnTriggerStay(Collider other)
+    {
         if (other.gameObject.CompareTag("Player"))
         {
             lanternCanvas.GetComponent<Canvas>().enabled = true;
@@ -50,17 +56,23 @@ public class CollectLantern : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.E) && !isLanterCollected)
             {
                 isLanterCollected = true;
+                CheckLanterCollected();
                 lanternCanvas.GetComponent<Canvas>().enabled = false;
-                //Destroy(gameObject); //lantern is collected and destroyed 
+                Destroy(gameObject); //lantern is collected and destroyed 
                 
-                    
+                
+                // it has to be added a light to the player
+                
             }
-            
         }
-        
-        else
+    }
+    
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.CompareTag("Player"))
         {
             lanternCanvas.GetComponent<Canvas>().enabled = false;
+            showCanvas = false;
         }
     }
 }

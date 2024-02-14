@@ -1,12 +1,20 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEditor.Experimental.AssetDatabaseExperimental.AssetDatabaseCounters;
 
 public class BloodController : MonoBehaviour
 { 
     [SerializeField] protected int blood = 100;
     [SerializeField] protected bool isAlive = true;
     [SerializeField] protected bool isFrozen = false;
+
+    public static BloodController Instance { get; private set; }
+
+    private void Awake()
+    {
+        Instance = this;
+    }
 
     public int GetBlood()
     {
@@ -43,5 +51,5 @@ public class BloodController : MonoBehaviour
     public void KillCharacter()
     { 
         isAlive = false;
-    }
+    } 
 }

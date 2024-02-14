@@ -1,17 +1,16 @@
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
-{
-    public GameObject player;
+{ 
+    public float counter = 5f;
     private BloodController bloodController;
-    public float counter = 5f; 
 
-    void Start()
-    {
-        bloodController = player.GetComponent<BloodController>();
+    private void Start()
+    { 
+        bloodController = BloodController.Instance;
     }
-     
-    void FixedUpdate()
+
+    private void FixedUpdate()
     {
         PeridocialBloodDecrease();
     }
@@ -27,6 +26,16 @@ public class GameManager : MonoBehaviour
         {
             bloodController.ChangeBlood(-2);
             counter = 5f;
+        }
+    }
+
+    public void EndTheLevel()
+    {
+        var bcon = BloodController.Instance;
+        bcon.KillCharacter();
+        if (!( bcon.IsAlive() ) && !( bcon.IsFrozen() ) )
+        {
+            //TODO : Oyunu Kazandý.
         }
     }
 }
