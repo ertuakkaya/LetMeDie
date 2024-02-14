@@ -61,7 +61,7 @@ public class PlayerMovement : MonoBehaviour
         yield return new WaitForSeconds(dashDuration);
 
         // Reset speed to normal after dash is finished
-        speed = 13f;
+        speed = 5.5f;
 
         // Reset dashing flag
         isDashing = false;
