@@ -26,4 +26,5 @@ public class Main_menu : MonoBehaviour
     {
         Application.Quit();
     }
+
 }
