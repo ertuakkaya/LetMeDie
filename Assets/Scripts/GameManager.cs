@@ -4,7 +4,7 @@ public class GameManager : MonoBehaviour
 {
     public GameObject player;
     private BloodController bloodController;
-    public float counter = 5; 
+    public float counter = 5f; 
 
     void Start()
     {
@@ -26,6 +26,7 @@ public class GameManager : MonoBehaviour
         else
         {
             bloodController.ChangeBlood(-2);
+            counter = 5f;
         }
     }
 }
