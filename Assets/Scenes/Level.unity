@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.14108214, g: 0.11802315, b: 0.09352628, a: 1}
+  m_IndirectSpecularColor: {r: 0.14113581, g: 0.118068196, b: 0.093552314, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1267,6 +1267,75 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 2.0093544, y: 9.832433, z: 2.0000005}
   m_Center: {x: 0.004674793, y: 3.9162164, z: 0.0000019073486}
+--- !u!1001 &260617407
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: b67d25fcaca270f47a0462994d8d4bc9, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: b67d25fcaca270f47a0462994d8d4bc9, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: b67d25fcaca270f47a0462994d8d4bc9, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: b67d25fcaca270f47a0462994d8d4bc9, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 9.871
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: b67d25fcaca270f47a0462994d8d4bc9, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.228
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: b67d25fcaca270f47a0462994d8d4bc9, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.224
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: b67d25fcaca270f47a0462994d8d4bc9, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.92387956
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: b67d25fcaca270f47a0462994d8d4bc9, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: b67d25fcaca270f47a0462994d8d4bc9, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.38268343
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: b67d25fcaca270f47a0462994d8d4bc9, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: b67d25fcaca270f47a0462994d8d4bc9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: b67d25fcaca270f47a0462994d8d4bc9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 45
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: b67d25fcaca270f47a0462994d8d4bc9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: b67d25fcaca270f47a0462994d8d4bc9, type: 3}
+      propertyPath: m_Name
+      value: graveyardFlask
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: b67d25fcaca270f47a0462994d8d4bc9, type: 3}
 --- !u!1001 &262568084
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9792,3 +9861,4 @@ SceneRoots:
   - {fileID: 545867442}
   - {fileID: 189346629}
   - {fileID: 1855698399}
+  - {fileID: 260617407}
