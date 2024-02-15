@@ -4,12 +4,18 @@ using System.Security.Cryptography;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+
 public class Main_menu : MonoBehaviour
 {
+    public static Main_menu Instance { get; private set; }
     public Canvas SettingsMenuCanvas;
     public Canvas MainMenuCanvas;
     private AudioSource musicSource;
 
+    private void Awake()
+    {
+        Instance = this;
+    }
     void Start()
     {
         musicSource = FindObjectOfType<AudioSource>();
