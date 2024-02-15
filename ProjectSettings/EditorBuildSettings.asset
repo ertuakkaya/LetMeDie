@@ -17,4 +17,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Semih.unity
     guid: a6497829cf744424c87b765da09ac399
+  - enabled: 1
+    path: Assets/Scenes/Level.unity
+    guid: 6d7d67206203635449a1f3fbe828ec83
   m_configObjects: {}
