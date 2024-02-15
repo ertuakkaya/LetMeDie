@@ -10,13 +10,12 @@ public class CollectFlasks : MonoBehaviour
     public static CollectFlasks Instance { get; private set; }
 
 
-    private bool hasPlayedPickupEffect = false;
 
     [SerializeField] private GameObject player;
     [SerializeField] private GameObject flask1;
     [SerializeField] public bool isFlask1Near = false;
     [SerializeField] private bool isFlask1Collected = false;
-    //[SerializeField] public ParticleSystem pickUpEffect;
+
 
 
 
@@ -29,7 +28,7 @@ public class CollectFlasks : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        /pickUpEffect.Stop();
+
     }
 
     // Update is called once per frame
@@ -43,10 +42,8 @@ public class CollectFlasks : MonoBehaviour
             Debug.Log("Flask 1 is collected   :    " + GameManager.Instance.flaskCount);
 
 
-             hasPlayedPickupEffect = false;
 
     CollectLantern.Instance.lanternCanvas.GetComponent<Canvas>().enabled = false;
-            //pickUpEffect.Play();
             UnVisFlask();
 
         }
@@ -82,8 +79,7 @@ public class CollectFlasks : MonoBehaviour
         //gameObject.transform.GetChild(1).gameObject.GetComponent<MeshRenderer>().enabled = false; // candle mesh is disabled
         //gameObject.transform.GetChild(2).gameObject.GetComponent<Light>().enabled = false; // light is disabled
        
-        //Denenecek
-        //pickUpEffect.Stop();
+        
     }
 
    
