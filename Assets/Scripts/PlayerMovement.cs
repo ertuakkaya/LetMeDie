@@ -33,19 +33,7 @@ public class PlayerMovement : MonoBehaviour
 
     void FixedUpdate()
     {
-        /*
-        moveHorizontal = Input.GetAxis("Horizontal") * 180;
-        moveVertical = Input.GetAxis("Vertical") * 180;
-        if (!(moveHorizontal == 0 && moveVertical == 0))
-            MoveThePlayer();
-        if (Input.GetKeyDown(KeyCode.LeftShift) && !isDashing)
-            StartCoroutine(Dash());
-        if (!isDashing)
-        {
-            dashEffect.Stop();
-            dashEffect1.Stop();
-        }
-        */
+        
         
         moveHorizontal = Input.GetAxis("Horizontal") * 180;
         moveVertical = Input.GetAxis("Vertical") * 180;

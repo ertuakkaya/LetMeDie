@@ -28,7 +28,19 @@ public class CollectLantern : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        LanternIntensity(); // lantern intensity is changing over time when it is collected // it is not working properly
+        //LanternIntensity(); // lantern intensity is changing over time when it is collected // it is not working properly
+        
+        LanternIntensity();
+
+        if (isLanterNear && Input.GetKeyDown(KeyCode.E) && !isLanterCollected)
+        {
+            isLanterCollected = true;
+            CheckLanterCollected();
+            lanternCanvas.GetComponent<Canvas>().enabled = false;
+            UnVisLantern();
+        }
+        
+        
     }
     
     
@@ -48,14 +60,7 @@ public class CollectLantern : MonoBehaviour
         {
             lanternCanvas.GetComponent<Canvas>().enabled = true;
             showCanvas = true;
-            if (Input.GetKeyDown(KeyCode.E) && !isLanterCollected)
-            {
-                isLanterCollected = true;
-                CheckLanterCollected();
-                lanternCanvas.GetComponent<Canvas>().enabled = false;
-                UnVisLantern();
-               
-            }
+            isLanterNear = true;
         }
     }
     
@@ -65,6 +70,7 @@ public class CollectLantern : MonoBehaviour
         {
             lanternCanvas.GetComponent<Canvas>().enabled = false;
             showCanvas = false;
+            isLanterNear = false;
         }
     }
 
