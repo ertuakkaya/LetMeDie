@@ -15,7 +15,7 @@ public class Main_menu : MonoBehaviour
     private void Awake()
     {
         Instance = this;
-    }
+    }   
     void Start()
     {
         musicSource = FindObjectOfType<AudioSource>();
