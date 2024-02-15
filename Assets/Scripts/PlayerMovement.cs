@@ -41,8 +41,6 @@ public class PlayerMovement : MonoBehaviour
 
     void FixedUpdate()
     {
-        
-        
         moveHorizontal = Input.GetAxis("Horizontal") * 180;
         moveVertical = Input.GetAxis("Vertical") * 180;
         if (!(moveHorizontal == 0 && moveVertical == 0))
@@ -57,11 +55,33 @@ public class PlayerMovement : MonoBehaviour
             dashEffect.Stop();
             dashEffect1.Stop();
         }
-        
-        
-        
-        
     }
+    
+    
+    /*
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.gameObject.CompareTag("Collectable"))
+        {
+            CollectLantern.Instance.lanternCanvas.GetComponent<Canvas>().enabled = true;
+            CollectLantern.Instance.showCanvas = true;
+            
+            
+        }
+    }
+    */
+    
+    
+    /*
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.CompareTag("Collectable"))
+        {
+            CollectLantern.Instance.lanternCanvas.GetComponent<Canvas>().enabled = false;
+            CollectLantern.Instance.showCanvas = false;
+        }
+    }
+    */
 
     private void Update()
     {
