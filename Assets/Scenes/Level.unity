@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.14108214, g: 0.11802315, b: 0.09352628, a: 1}
+  m_IndirectSpecularColor: {r: 0.14113581, g: 0.118068196, b: 0.093552314, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -247,7 +247,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!54 &28338771
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1361,8 +1361,6 @@ MonoBehaviour:
   flask1: {fileID: 220838879}
   isFlask1Near: 0
   isFlask1Collected: 0
-  flasks:
-  - {fileID: 220838879}
 --- !u!1001 &228127135
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8576,7 +8574,6 @@ MonoBehaviour:
   flask1: {fileID: 0}
   isFlask1Near: 0
   isFlask1Collected: 0
-  flasks: []
 --- !u!65 &1775342366
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -9085,6 +9082,7 @@ MonoBehaviour:
   isWinnable: 0
   portalEffect: {fileID: 1612013392}
   winPlatform: {fileID: 1135643535}
+  flaskCount: 0
 --- !u!4 &1855698399
 Transform:
   m_ObjectHideFlags: 0
@@ -9646,8 +9644,6 @@ MonoBehaviour:
   flask1: {fileID: 1939562305}
   isFlask1Near: 0
   isFlask1Collected: 0
-  flasks:
-  - {fileID: 1939562305}
 --- !u!65 &1939562307
 BoxCollider:
   m_ObjectHideFlags: 0
