@@ -79,7 +79,11 @@ public class PlayerMovement : MonoBehaviour
     {
         // Set dashing flag to true
         isDashing = true;
-
+        
+        
+        BloodController.Instance.ChangeBlood(-10); // 10 blood is lost when dashing
+        
+        
         Vector3 startPosition = transform.position;
 
         // Set the speed to dash speed

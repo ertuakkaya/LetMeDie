@@ -31,7 +31,8 @@ public class EnemyMovement : MonoBehaviour
         transform.position = Vector3.MoveTowards(transform.position, playerTransform.position, speed * Time.deltaTime);
         EnemyFollowEffect.Play();
     }
-
+    
+    
     private void FollowAndMove()
     {
         float minDistance = 5f; // Minimum distance for the enemy to start following the player
