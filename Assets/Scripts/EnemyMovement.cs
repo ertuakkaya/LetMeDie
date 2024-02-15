@@ -6,8 +6,8 @@ public class EnemyMovement : MonoBehaviour
     public Transform playerTransform; // Reference to the player's transform
     public float speed = 5.0f; // Speed at which the enemy moves
 
-    
-    
+    [SerializeField] public ParticleSystem EnemyFollowEffect;
+
     [SerializeField] private float currentDistance = 10f;
     [SerializeField] private float triggerDistance = 5f;
     
@@ -15,6 +15,7 @@ public class EnemyMovement : MonoBehaviour
     private void Awake()
     {
         playerTransform = GameObject.FindWithTag("Player").transform;
+        EnemyFollowEffect.Stop();
     }
 
     void Update()
@@ -28,6 +29,7 @@ public class EnemyMovement : MonoBehaviour
         currentDistance = Vector3.Distance(transform.position, playerTransform.position);
         if (currentDistance !> triggerDistance) return;
         transform.position = Vector3.MoveTowards(transform.position, playerTransform.position, speed * Time.deltaTime);
+        EnemyFollowEffect.Play();
     }
 
     private void FollowAndMove()
@@ -40,7 +42,7 @@ public class EnemyMovement : MonoBehaviour
         if (currentDistance > minDistance && currentDistance < maxDistance)
         {
             // Move the enemy towards the player
-            transform.position = Vector3.MoveTowards(transform.position, playerTransform.position, speed * Time.deltaTime);
+            transform.position = Vector3.MoveTowards(transform.position, playerTransform.position, speed * Time.deltaTime);      
         }
     }
 }
