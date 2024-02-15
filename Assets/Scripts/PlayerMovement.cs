@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using System.Collections;
 using Unity.VisualScripting;
@@ -20,6 +21,10 @@ public class PlayerMovement : MonoBehaviour
     private float moveVertical = 0;
     float r;
     
+    
+    private bool shiftPressed = false;
+    
+    
     void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -28,6 +33,7 @@ public class PlayerMovement : MonoBehaviour
 
     void FixedUpdate()
     {
+        /*
         moveHorizontal = Input.GetAxis("Horizontal") * 180;
         moveVertical = Input.GetAxis("Vertical") * 180;
         if (!(moveHorizontal == 0 && moveVertical == 0))
@@ -39,16 +45,44 @@ public class PlayerMovement : MonoBehaviour
             dashEffect.Stop();
             dashEffect1.Stop();
         }
+        */
+        
+        moveHorizontal = Input.GetAxis("Horizontal") * 180;
+        moveVertical = Input.GetAxis("Vertical") * 180;
+        if (!(moveHorizontal == 0 && moveVertical == 0))
+            MoveThePlayer();
+        if (shiftPressed && !isDashing)
+        {
+            StartCoroutine(Dash());
+            shiftPressed = false;
+        }
+        if (!isDashing)
+        {
+            dashEffect.Stop();
+            dashEffect1.Stop();
+        }
+        
+        
+        
+        
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.LeftShift))
+        {
+            shiftPressed = true;
+        }
     }
 
     private void MoveThePlayer()
     {
-        // Yürüme
+        // Yï¿½rï¿½me
         Vector3 movement = new Vector3(moveHorizontal, 0.0f, moveVertical);
         movement = movement.normalized * speed * Time.deltaTime;
         rb.MovePosition(transform.position + movement);
         rb.MoveRotation(Quaternion.LookRotation(movement)); 
-        // Dönme
+        // Dï¿½nme
         float Angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, Mathf.Atan2(moveHorizontal, moveVertical) * Mathf.Rad2Deg, ref r, 0.1f);
         transform.rotation = Quaternion.Euler(0, Angle, 0);
     }  
@@ -69,12 +103,16 @@ public class PlayerMovement : MonoBehaviour
         // Reset speed to normal after dash is finished
         speed = 5.5f;
 
-        // Reset dashing flag
-        isDashing = false;
+       
 
         dashEffect.Play();
         dashEffect1.Play();
 
         dashEffect.transform.position = startPosition;
+        // Reset dashing flag
+        isDashing = false;
     }
+
+    
+    
 }
