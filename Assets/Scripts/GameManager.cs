@@ -27,7 +27,7 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.T))
+        if (Input.GetKeyDown(KeyCode.T)) // T tusuna basınca portal effecti aktif oluyor.
         {
             CheckPortal();
         }
