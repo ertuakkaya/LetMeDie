@@ -5,6 +5,10 @@ using Unity.VisualScripting;
 
 public class PlayerMovement : MonoBehaviour
 {
+    public static PlayerMovement Instance { get; private set; }
+    
+    
+    
     public float speed = 5.5f; 
     public float dashSpeed = 10f;  
     public float dashDuration = 0.2f;  
@@ -23,8 +27,12 @@ public class PlayerMovement : MonoBehaviour
     
     
     private bool shiftPressed = false;
-    
-    
+
+    private void Awake()
+    {
+        Instance = this;
+    }
+
     void Start()
     {
         rb = GetComponent<Rigidbody>();
