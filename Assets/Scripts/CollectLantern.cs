@@ -39,7 +39,7 @@ public class CollectLantern : MonoBehaviour
         player.GetComponent<Light>().enabled = true;
         isLanterCollected = true;
         lightTop.GetComponent<Light>().enabled = true;
-        Debug.Log("Lantern is collected and added to the player's light component.");
+        //Debug.Log("Lantern is collected and added to the player's light component.");
     }
 
     private void OnTriggerStay(Collider other)
@@ -54,12 +54,7 @@ public class CollectLantern : MonoBehaviour
                 CheckLanterCollected();
                 lanternCanvas.GetComponent<Canvas>().enabled = false;
                 UnVisLantern();
-                
-                
-                
-                
-                // it has to be added a light to the player
-                
+               
             }
         }
     }
@@ -75,8 +70,12 @@ public class CollectLantern : MonoBehaviour
 
     private void UnVisLantern()
     {
-        gameObject.GetComponent<MeshRenderer>().enabled = false;
-        gameObject.gameObject.GetComponent<BoxCollider>().enabled = false;
+        // works
+        // it is getting the children of the lantern and disabling them
+        gameObject.GetComponent<BoxCollider>().enabled = false; // lanter collider is disabled
+        gameObject.transform.GetChild(0).gameObject.GetComponent<MeshRenderer>().enabled = false; // lantern mesh is disabled
+        gameObject.transform.GetChild(1).gameObject.GetComponent<MeshRenderer>().enabled = false; // candle mesh is disabled
+        gameObject.transform.GetChild(2).gameObject.GetComponent<Light>().enabled = false; // light is disabled
     }
     
     private void LanternIntensity()
