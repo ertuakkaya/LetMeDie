@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 { 
-    
+    public static GameManager Instance { get; set; }
     
     
     public float counter = 5f;
@@ -15,8 +15,14 @@ public class GameManager : MonoBehaviour
     [SerializeField] private ParticleSystem portalEffect;
     [SerializeField] private GameObject winPlatform;
     
-   
+   // CollectFlasks.cs'de kullanılıyor. , Toplanan flask sayısını tutar.
+    public int flaskCount = 0;
     
+    
+    private void Awake()
+    {
+        Instance = this;
+    }
     private void Start()
     { 
         bloodController = BloodController.Instance;

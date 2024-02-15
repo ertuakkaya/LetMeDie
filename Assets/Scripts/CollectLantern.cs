@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class CollectLantern : MonoBehaviour
 {
+    public static CollectLantern Instance { get; private set; }
+    
     [SerializeField] private GameObject player;
     [SerializeField] private Light lightTop;
     
@@ -12,17 +14,26 @@ public class CollectLantern : MonoBehaviour
     // when player press E, collect the lantern and destroy it
     
     
-    [SerializeField] private bool isLanterCollected = false;
-    [SerializeField] private bool isLanterNear = false;
-    public Canvas lanternCanvas;
-    [SerializeField] bool showCanvas = false;
     
+    [SerializeField] private bool isLanterCollected = false;
+    [SerializeField] public bool isLanterNear = false;
+    public Canvas lanternCanvas;
+    [SerializeField] public bool showCanvas = false;
+
+
+    private void Awake()
+    {
+        Instance = this;
+    }
+
     // Start is called before the first frame update
     void Start()
     {
         player.GetComponent<Light>().enabled = false;
         lanternCanvas.GetComponent<Canvas>().enabled = false;
         lightTop.GetComponent<Light>().enabled = false;
+        
+        
     }
 
     // Update is called once per frame
