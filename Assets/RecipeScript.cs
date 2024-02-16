@@ -22,11 +22,11 @@ public class RecipeScript : MonoBehaviour
     }
     private void Update()
     {
-        if(NesneToplandý==true) 
+        if(NesneToplandý) 
         {
             if(Input.GetKeyDown(KeyCode.F)) 
             {
-                if (CanvasAçýk==false)
+                if (!CanvasAçýk)
                 {
                     MissionCanvas.enabled=true;
                 }
