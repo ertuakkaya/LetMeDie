@@ -11,12 +11,26 @@ public class EnemyMovement : MonoBehaviour
     [SerializeField] private float currentDistance = 10f;
     [SerializeField] private float triggerDistance = 5f;
     
-
+    
+    // for enemy patrol
+    public Transform[] patrolPoints;
+    private int currentPoint;
+    public float patrolSpeed;
+    
+    
+    
     private void Awake()
     {
         playerTransform = GameObject.FindWithTag("Player").transform;
         EnemyFollowEffect.Stop();
     }
+
+    private void Start()
+    {
+        // for enemy patrol
+        currentPoint = 0;
+    }
+
 
     void Update()
     {
@@ -25,6 +39,8 @@ public class EnemyMovement : MonoBehaviour
         {
             EnemyFollowEffect.Stop();
         }
+        
+        Patrol();
         
     }
     
@@ -48,6 +64,19 @@ public class EnemyMovement : MonoBehaviour
         {
             // Move the enemy towards the player
             transform.position = Vector3.MoveTowards(transform.position, playerTransform.position, speed * Time.deltaTime);      
+        }
+    }
+    
+    
+    private void Patrol()
+    {
+        if (transform.position != patrolPoints[currentPoint].position)
+        {
+            transform.position = Vector3.MoveTowards(transform.position, patrolPoints[currentPoint].position, patrolSpeed * Time.deltaTime);
+        }
+        else
+        {
+            currentPoint = (currentPoint + 1) % patrolPoints.Length;
         }
     }
 }
