@@ -16,13 +16,8 @@ public class EnemyMovement : MonoBehaviour
     public Transform[] patrolPoints;
     private int currentPoint;
     public float patrolSpeed;
-
+    [SerializeField] private bool isFollowTriggered; // patrol or follow player
     /// ////////////////
-
-
-    // patrol or follow player
-    [SerializeField] private bool isFollowTriggered;
-    
     
     
     private void Awake()
@@ -42,8 +37,6 @@ public class EnemyMovement : MonoBehaviour
     {
         FollowPlayer();
         Patrol();
-        
-        
     }
     
     private void FollowPlayer()
@@ -58,21 +51,6 @@ public class EnemyMovement : MonoBehaviour
         isFollowTriggered = true;
         transform.position = Vector3.MoveTowards(transform.position, playerTransform.position, speed * Time.deltaTime);
         EnemyFollowEffect.Play();
-    }
-    
-    
-    private void FollowAndMove()
-    {
-        float minDistance = 5f; // Minimum distance for the enemy to start following the player
-        float maxDistance = 15f; // Maximum distance for the enemy to stop following the player
-
-        currentDistance = Vector3.Distance(transform.position, playerTransform.position);
-
-        if (currentDistance > minDistance && currentDistance < maxDistance)
-        {
-            // Move the enemy towards the player
-            transform.position = Vector3.MoveTowards(transform.position, playerTransform.position, speed * Time.deltaTime);      
-        }
     }
     
     
