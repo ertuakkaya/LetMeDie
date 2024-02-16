@@ -16,6 +16,12 @@ public class EnemyMovement : MonoBehaviour
     public Transform[] patrolPoints;
     private int currentPoint;
     public float patrolSpeed;
+
+    /// ////////////////
+
+
+    // patrol or follow player
+    [SerializeField] private bool isFollowTriggered;
     
     
     
@@ -35,19 +41,21 @@ public class EnemyMovement : MonoBehaviour
     void Update()
     {
         FollowPlayer();
-        if (currentDistance > triggerDistance)
-        {
-            EnemyFollowEffect.Stop();
-        }
-        
         Patrol();
+        
         
     }
     
     private void FollowPlayer()
     {
         currentDistance = Vector3.Distance(transform.position, playerTransform.position);
-        if (currentDistance !> triggerDistance) return;
+        if (currentDistance ! > triggerDistance)
+        {
+            EnemyFollowEffect.Stop();
+            isFollowTriggered = false; // if the player is far away, stop following
+            return;
+        }
+        isFollowTriggered = true;
         transform.position = Vector3.MoveTowards(transform.position, playerTransform.position, speed * Time.deltaTime);
         EnemyFollowEffect.Play();
     }
@@ -70,6 +78,8 @@ public class EnemyMovement : MonoBehaviour
     
     private void Patrol()
     {
+        if (isFollowTriggered) return; // if the enemy is following the player, don't patrol
+       
         if (transform.position != patrolPoints[currentPoint].position)
         {
             transform.position = Vector3.MoveTowards(transform.position, patrolPoints[currentPoint].position, patrolSpeed * Time.deltaTime);
@@ -79,4 +89,7 @@ public class EnemyMovement : MonoBehaviour
             currentPoint = (currentPoint + 1) % patrolPoints.Length;
         }
     }
+    
+    
+    
 }
