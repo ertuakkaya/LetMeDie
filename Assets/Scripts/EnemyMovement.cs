@@ -21,6 +21,10 @@ public class EnemyMovement : MonoBehaviour
     void Update()
     {
         FollowPlayer();
+        if (currentDistance > triggerDistance)
+        {
+            EnemyFollowEffect.Stop();
+        }
         
     }
     
