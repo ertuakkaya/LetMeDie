@@ -2,13 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using static UnityEditor.Experimental.AssetDatabaseExperimental.AssetDatabaseCounters;
+using UnityEngine.UI;
 
 public class BloodController : MonoBehaviour
 { 
     [SerializeField] protected int blood = 100;
     [SerializeField] protected bool isAlive = true;
-    [SerializeField] protected bool isFrozen = false;
+    [SerializeField] protected bool isFrozen = false; 
 
+    public Slider slider;
     public static BloodController Instance { get; private set; }
 
     private void Awake()
@@ -36,6 +38,8 @@ public class BloodController : MonoBehaviour
             blood = 0;
             isFrozen = true;
         }
+
+        slider.value = blood;
     }
 
     public bool IsAlive()
