@@ -58,30 +58,7 @@ public class PlayerMovement : MonoBehaviour
     }
     
     
-    /*
-    private void OnTriggerStay(Collider other)
-    {
-        if (other.gameObject.CompareTag("Collectable"))
-        {
-            CollectLantern.Instance.lanternCanvas.GetComponent<Canvas>().enabled = true;
-            CollectLantern.Instance.showCanvas = true;
-            
-            
-        }
-    }
-    */
     
-    
-    /*
-    private void OnTriggerExit(Collider other)
-    {
-        if (other.gameObject.CompareTag("Collectable"))
-        {
-            CollectLantern.Instance.lanternCanvas.GetComponent<Canvas>().enabled = false;
-            CollectLantern.Instance.showCanvas = false;
-        }
-    }
-    */
 
     private void Update()
     {

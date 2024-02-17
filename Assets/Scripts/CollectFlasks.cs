@@ -17,7 +17,12 @@ public class CollectFlasks : MonoBehaviour
     [SerializeField] private bool isFlask1Collected = false;
     [SerializeField] public ParticleSystem collectEffect;
 
-
+    
+    //
+    [SerializeField] private bool isBoneCollected = false;
+    [SerializeField] private bool isSkullCollected = false;
+    
+    
     private void Awake()
     {
         Instance = this;
@@ -42,8 +47,10 @@ public class CollectFlasks : MonoBehaviour
 
             collectEffect.Play();
 
-    CollectLantern.Instance.lanternCanvas.GetComponent<Canvas>().enabled = false;
+            CollectLantern.Instance.lanternCanvas.GetComponent<Canvas>().enabled = false;
             UnVisFlask();
+
+            
 
         }
 
@@ -77,11 +84,46 @@ public class CollectFlasks : MonoBehaviour
         gameObject.GetComponent<MeshRenderer>().enabled = false; // lantern mesh is disabled
         //gameObject.transform.GetChild(1).gameObject.GetComponent<MeshRenderer>().enabled = false; // candle mesh is disabled
         //gameObject.transform.GetChild(2).gameObject.GetComponent<Light>().enabled = false; // light is disabled
-       
+        
         Invoke("StopEffect",0.5f);
+        
+        /*
+        if (gameObject.CompareTag("Bone"))
+        {
+            isBoneCollected = true;
+            Debug.Log("Bone is collected.");
+        }
+        */
+        
+        CheckTask();
+        
         
     }
 
+    
+    
+    // Task check
+    private void CheckTask()
+    {
+        switch (gameObject.tag)
+        {
+            case "Bone":
+                isBoneCollected = true;
+                Debug.Log("Bone is collected.");
+                break;
+
+            case "Skull":
+                isSkullCollected = true;
+                Debug.Log("Skull is collected.");
+                break;
+
+            default:
+                // Optional: Handle any other cases here
+                break;
+        }
+    }
+    
+    
    private void StopEffect()
     {
             collectEffect.Stop();
