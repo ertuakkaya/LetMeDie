@@ -1,6 +1,8 @@
 using System;
 using UnityEngine;
 
+// this scirpt is responsible for managing the game. such as checking if the game is winnable, checking the portal, etc.
+
 public class GameManager : MonoBehaviour
 { 
     public static GameManager Instance { get; set; }
@@ -11,12 +13,19 @@ public class GameManager : MonoBehaviour
 
 
     /// Finish Game
-    [SerializeField] private bool isWinnable = false;
+    [SerializeField] public bool isWinnable = false;
     [SerializeField] private ParticleSystem portalEffect;
     [SerializeField] private GameObject winPlatform;
     
    // CollectFlasks.cs'de kullanılıyor. , Toplanan flask sayısını tutar.
     public int flaskCount = 0;
+    
+    
+    // Check if the task is completed
+    [SerializeField] public  bool isBoneCollected = false;
+    [SerializeField] public  bool isSkullCollected = false;
+    [SerializeField] public  bool isFlaskCollected = false;
+    
     
     
     private void Awake()
@@ -33,10 +42,15 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
+        /*
         if (Input.GetKeyDown(KeyCode.T)) // T tusuna basınca portal effecti aktif oluyor.
         {
             CheckPortal();
         }
+        */
+        
+        //CheckWinnable();
+        CheckTask();
     }
 
     private void FixedUpdate()
@@ -65,7 +79,8 @@ public class GameManager : MonoBehaviour
         if (!( bcon.IsAlive() ) && !( bcon.IsFrozen() ) )
         {
             //TODO : Oyunu Kazand�.
-            isWinnable = true;
+            //isWinnable = true;
+            
         }
     }
     
@@ -77,9 +92,37 @@ public class GameManager : MonoBehaviour
     // if player is alive and not frozen, activate the portal effect.
     public void CheckPortal()
     {
-        if (!BloodController.Instance.IsAlive() && !BloodController.Instance.IsFrozen()) return;
-        isWinnable = true;
+        if (!BloodController.Instance.IsAlive() && !BloodController.Instance.IsFrozen() && !isWinnable) return;
         portalEffect.Play(); // Activate the portal effect.
         
     }
+    
+    /*
+    public void CheckWinnable()
+    {
+        if (!isWinnable) return;
+        Debug.Log("isWinnable  : " + isWinnable);
+        portalEffect.Play(); // Activate the portal effect.
+    }
+    */
+    
+    // Task check
+    private void CheckTask()
+    {
+        //if (!isBoneCollected && !isSkullCollected && !isFlaskCollected) return; // if all tasks are not completed, return.
+
+        if (isFlaskCollected  && isBoneCollected && isSkullCollected)
+        {
+            // if all tasks are completed, activate the win platform.
+            Debug.Log("All tasks are completed.");
+            isWinnable = true;
+            portalEffect.Play(); // Activate the portal effect.
+        }
+        
+        
+        
+        
+    }
+    
+    
 }
