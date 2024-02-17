@@ -42,11 +42,14 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
+        /*
         if (Input.GetKeyDown(KeyCode.T)) // T tusuna basınca portal effecti aktif oluyor.
         {
             CheckPortal();
         }
-        CheckWinnable();
+        */
+        
+        //CheckWinnable();
         CheckTask();
     }
 
@@ -76,7 +79,7 @@ public class GameManager : MonoBehaviour
         if (!( bcon.IsAlive() ) && !( bcon.IsFrozen() ) )
         {
             //TODO : Oyunu Kazand�.
-            isWinnable = true;
+            //isWinnable = true;
             
         }
     }
@@ -93,57 +96,32 @@ public class GameManager : MonoBehaviour
         portalEffect.Play(); // Activate the portal effect.
         
     }
-
+    
+    /*
     public void CheckWinnable()
     {
         if (!isWinnable) return;
         Debug.Log("isWinnable  : " + isWinnable);
         portalEffect.Play(); // Activate the portal effect.
     }
-    
+    */
     
     // Task check
     private void CheckTask()
     {
-        /*
-        switch (gameObject.tag)
-        {
-            
-            case "Bone":
-                isBoneCollected = true;
-                Debug.Log("Bone is collected." + isBoneCollected);
-                Debug.Log("Skull is collected." + isSkullCollected);
-                Debug.Log("Flask is collected." + isFlaskCollected);
-                Debug.Log("--------------------");
-                break;
+        //if (!isBoneCollected && !isSkullCollected && !isFlaskCollected) return; // if all tasks are not completed, return.
 
-            case "Skull":
-                isSkullCollected = true;
-                Debug.Log("Skull is collected." + isSkullCollected);
-                Debug.Log("Bone is collected." + isBoneCollected);
-                Debug.Log("Flask is collected." + isFlaskCollected);
-                Debug.Log("--------------------");
-                break;
-            
-            case "Flask":
-                isBoneCollected = true;
-                Debug.Log("Flask is collected." + isFlaskCollected);
-                Debug.Log("Bone is collected." + isBoneCollected);
-                Debug.Log("Skull is collected." + isSkullCollected);
-                Debug.Log("--------------------");
-                break;
-            
-            default:
-                // Optional: Handle any other cases here
-                
-                break;
-        }
-        */
-        if (isBoneCollected && isSkullCollected && isFlaskCollected)
+        if (isFlaskCollected  && isBoneCollected && isSkullCollected)
         {
+            // if all tasks are completed, activate the win platform.
             Debug.Log("All tasks are completed.");
-            GameManager.Instance.isWinnable = true;
+            isWinnable = true;
+            portalEffect.Play(); // Activate the portal effect.
         }
+        
+        
+        
+        
     }
     
     

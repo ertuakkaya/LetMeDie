@@ -109,28 +109,16 @@ public class CollectFlasks : MonoBehaviour
             
             case "Bone":
                 GameManager.Instance.isBoneCollected = true;
-                //Debug.Log("Bone is collected." + isBoneCollected);
-                // Debug.Log("Skull is collected." + isSkullCollected);
-                //Debug.Log("Flask is collected." + isFlaskCollected);
-                //Debug.Log("--------------------");
                 Debug.Log( "Bone is collected." + GameManager.Instance.isBoneCollected);
                 break;
 
             case "Skull":
                 GameManager.Instance.isSkullCollected = true;
-                //Debug.Log("Skull is collected." + isSkullCollected);
-                // Debug.Log("Bone is collected." + isBoneCollected);
-                //Debug.Log("Flask is collected." + isFlaskCollected);
-                // Debug.Log("--------------------");
                 Debug.Log( "Skull is collected." + GameManager.Instance.isSkullCollected);
                 break;
             
             case "Flask":
                 GameManager.Instance.isFlaskCollected = true;
-                //Debug.Log("Flask is collected." + isFlaskCollected);
-                //Debug.Log("Bone is collected." + isBoneCollected);
-                //Debug.Log("Skull is collected." + isSkullCollected);
-                //Debug.Log("--------------------");
                 Debug.Log("Flask is collected." + GameManager.Instance.isFlaskCollected);
                 break;
             
@@ -140,13 +128,6 @@ public class CollectFlasks : MonoBehaviour
                 break;
         }
         
-        /*
-        if (isBoneCollected && isSkullCollected && isFlaskCollected)
-        {
-            Debug.Log("All tasks are completed.");
-            GameManager.Instance.isWinnable = true;
-        }
-        */
     }
     
     
