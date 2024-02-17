@@ -2,13 +2,10 @@ using System;
 using UnityEngine;
 using System.Collections;
 using Unity.VisualScripting;
-using UnityEngine.UI;
 
 public class PlayerMovement : MonoBehaviour
 {
-    public static PlayerMovement Instance { get; private set; }
-
-    public Slider slider; 
+    public static PlayerMovement Instance { get; private set; } 
   
     public float speed = 5.5f; 
     public float dashSpeed = 10f;  

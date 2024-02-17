@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 // this scirpt is responsible for managing the game. such as checking if the game is winnable, checking the portal, etc.
 
@@ -56,6 +57,10 @@ public class GameManager : MonoBehaviour
     private void FixedUpdate()
     {
         PeridocialBloodDecrease();
+        if (bloodController.IsFrozen() && bloodController.IsAlive())
+        {
+            TriggerGameOver();
+        }
     }
 
     private void PeridocialBloodDecrease()
@@ -82,12 +87,8 @@ public class GameManager : MonoBehaviour
             //isWinnable = true;
             
         }
-    }
-    
-    
-    
-    
-    
+    } 
+
     // simdilik T tusuna basince acılıyor
     // if player is alive and not frozen, activate the portal effect.
     public void CheckPortal()
@@ -117,12 +118,11 @@ public class GameManager : MonoBehaviour
             Debug.Log("All tasks are completed.");
             isWinnable = true;
             portalEffect.Play(); // Activate the portal effect.
-        }
-        
-        
-        
-        
+        } 
     }
     
-    
+    public void TriggerGameOver()
+    {
+        SceneManager.LoadScene("GameOverScene");
+    }
 }
