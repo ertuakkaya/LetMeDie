@@ -70,18 +70,27 @@ public class EnemyMovement : MonoBehaviour
         }
     }
     
-    // eðer oyuncu düþmanýn trigger alanýna girerse, caný azalýr
+    // eï¿½er oyuncu dï¿½ï¿½manï¿½n trigger alanï¿½na girerse, canï¿½ azalï¿½r
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player"))
+        
+    }
+
+    private void OnCollisionStay(Collision other)
+    {
+        if (other.gameObject.CompareTag("Player"))
         {
             BloodController bloodController = BloodController.Instance;
             if (bloodController != null)
             {
-                bloodController.ChangeBlood(-10);
+                bloodController.ChangeBlood(-1);
+                //Debug.Log("Player entered the enemy's trigger area. -10 blood is lost.");
             }
         }
     }
+    
+    
+    
     
 }
