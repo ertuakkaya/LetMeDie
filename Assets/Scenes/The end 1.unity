@@ -292,6 +292,9 @@ MonoBehaviour:
   EnemyFollowEffect: {fileID: 1166737277}
   currentDistance: 10
   triggerDistance: 10
+  patrolPoints: []
+  patrolSpeed: 0
+  isFollowTriggered: 0
 --- !u!65 &28338773
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1778,6 +1781,37 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3678372252875767150, guid: e76a15fb951ce474cb85b5a90fe5acff, type: 3}
   m_PrefabInstance: {fileID: 310279960}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &315669181
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 315669182}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &315669182
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 315669181}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &345070384
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2243,7 +2277,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 800, y: 600}
@@ -2289,8 +2323,8 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1903549055}
   - {fileID: 460749927}
+  - {fileID: 1903549055}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -5632,7 +5666,7 @@ Transform:
   m_GameObject: {fileID: 1173762830}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.43, z: 0}
+  m_LocalPosition: {x: 43.04, y: 5.27, z: 16.35}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -8832,7 +8866,7 @@ Transform:
   m_GameObject: {fileID: 1814626650}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -14.71, y: 102.12, z: -112.196}
+  m_LocalPosition: {x: -20.6, y: 84.75, z: -122.45}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -9149,6 +9183,7 @@ MonoBehaviour:
   isWinnable: 0
   portalEffect: {fileID: 1612013392}
   winPlatform: {fileID: 1135643535}
+  flaskCount: 0
 --- !u!4 &1855698399
 Transform:
   m_ObjectHideFlags: 0
@@ -9290,14 +9325,14 @@ RectTransform:
   m_GameObject: {fileID: 1903549054}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 5.4790688, y: 4.5497885, z: 1}
+  m_LocalScale: {x: 2.2829452, y: 1.895745, z: 0.41666663}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 425760934}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 272.0475, y: 239.3028}
+  m_AnchoredPosition: {x: 129, y: 94}
   m_SizeDelta: {x: 313.3271, y: 42.0538}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1903549056
@@ -10428,3 +10463,4 @@ SceneRoots:
   - {fileID: 56125291}
   - {fileID: 260617407}
   - {fileID: 425760934}
+  - {fileID: 315669182}
