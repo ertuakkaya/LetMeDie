@@ -1,6 +1,8 @@
 using System;
 using UnityEngine;
 
+// this scirpt is responsible for managing the game. such as checking if the game is winnable, checking the portal, etc.
+
 public class GameManager : MonoBehaviour
 { 
     public static GameManager Instance { get; set; }
@@ -11,12 +13,19 @@ public class GameManager : MonoBehaviour
 
 
     /// Finish Game
-    [SerializeField] private bool isWinnable = false;
+    [SerializeField] public bool isWinnable = false;
     [SerializeField] private ParticleSystem portalEffect;
     [SerializeField] private GameObject winPlatform;
     
    // CollectFlasks.cs'de kullanılıyor. , Toplanan flask sayısını tutar.
     public int flaskCount = 0;
+    
+    
+    // Check if the task is completed
+    [SerializeField] public  bool isBoneCollected = false;
+    [SerializeField] public  bool isSkullCollected = false;
+    [SerializeField] public  bool isFlaskCollected = false;
+    
     
     
     private void Awake()
@@ -37,6 +46,8 @@ public class GameManager : MonoBehaviour
         {
             CheckPortal();
         }
+        CheckWinnable();
+        CheckTask();
     }
 
     private void FixedUpdate()
@@ -66,6 +77,7 @@ public class GameManager : MonoBehaviour
         {
             //TODO : Oyunu Kazand�.
             isWinnable = true;
+            
         }
     }
     
@@ -77,9 +89,62 @@ public class GameManager : MonoBehaviour
     // if player is alive and not frozen, activate the portal effect.
     public void CheckPortal()
     {
-        if (!BloodController.Instance.IsAlive() && !BloodController.Instance.IsFrozen()) return;
-        isWinnable = true;
+        if (!BloodController.Instance.IsAlive() && !BloodController.Instance.IsFrozen() && !isWinnable) return;
         portalEffect.Play(); // Activate the portal effect.
         
     }
+
+    public void CheckWinnable()
+    {
+        if (!isWinnable) return;
+        Debug.Log("isWinnable  : " + isWinnable);
+        portalEffect.Play(); // Activate the portal effect.
+    }
+    
+    
+    // Task check
+    private void CheckTask()
+    {
+        /*
+        switch (gameObject.tag)
+        {
+            
+            case "Bone":
+                isBoneCollected = true;
+                Debug.Log("Bone is collected." + isBoneCollected);
+                Debug.Log("Skull is collected." + isSkullCollected);
+                Debug.Log("Flask is collected." + isFlaskCollected);
+                Debug.Log("--------------------");
+                break;
+
+            case "Skull":
+                isSkullCollected = true;
+                Debug.Log("Skull is collected." + isSkullCollected);
+                Debug.Log("Bone is collected." + isBoneCollected);
+                Debug.Log("Flask is collected." + isFlaskCollected);
+                Debug.Log("--------------------");
+                break;
+            
+            case "Flask":
+                isBoneCollected = true;
+                Debug.Log("Flask is collected." + isFlaskCollected);
+                Debug.Log("Bone is collected." + isBoneCollected);
+                Debug.Log("Skull is collected." + isSkullCollected);
+                Debug.Log("--------------------");
+                break;
+            
+            default:
+                // Optional: Handle any other cases here
+                
+                break;
+        }
+        */
+        if (isBoneCollected && isSkullCollected && isFlaskCollected)
+        {
+            Debug.Log("All tasks are completed.");
+            GameManager.Instance.isWinnable = true;
+        }
+    }
+    
+    
 }

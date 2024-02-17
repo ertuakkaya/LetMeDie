@@ -3,6 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// this script is for the lantern that player can collect
+
 public class CollectLantern : MonoBehaviour
 {
     public static CollectLantern Instance { get; private set; }

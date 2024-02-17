@@ -3,6 +3,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
+// This script is for collecting task items such as bone, skull, flask etc.
+
 public class CollectFlasks : MonoBehaviour
 {
     
@@ -18,9 +21,12 @@ public class CollectFlasks : MonoBehaviour
     [SerializeField] public ParticleSystem collectEffect;
 
     
+    /*
     // Check if the task is completed
-    [SerializeField] private bool isBoneCollected = false;
-    [SerializeField] private bool isSkullCollected = false;
+    [SerializeField] private static bool isBoneCollected = false;
+    [SerializeField] private static bool isSkullCollected = false;
+    [SerializeField] private static bool isFlaskCollected = false;
+    */
     
     
     private void Awake()
@@ -44,7 +50,7 @@ public class CollectFlasks : MonoBehaviour
             isFlask1Collected = true;
             GameManager.Instance.flaskCount++; // flask count is increased
             
-            Debug.Log("Flask 1 is collected   :    " + GameManager.Instance.flaskCount);
+            //Debug.Log("Flask 1 is collected   :    " + GameManager.Instance.flaskCount);
 
             collectEffect.Play();
 
@@ -88,14 +94,6 @@ public class CollectFlasks : MonoBehaviour
         
         Invoke("StopEffect",0.5f);
         
-        /*
-        if (gameObject.CompareTag("Bone"))
-        {
-            isBoneCollected = true;
-            Debug.Log("Bone is collected.");
-        }
-        */
-        
         CheckTask();
         
         
@@ -108,20 +106,47 @@ public class CollectFlasks : MonoBehaviour
     {
         switch (gameObject.tag)
         {
+            
             case "Bone":
-                isBoneCollected = true;
-                Debug.Log("Bone is collected.");
+                GameManager.Instance.isBoneCollected = true;
+                //Debug.Log("Bone is collected." + isBoneCollected);
+                // Debug.Log("Skull is collected." + isSkullCollected);
+                //Debug.Log("Flask is collected." + isFlaskCollected);
+                //Debug.Log("--------------------");
+                Debug.Log( "Bone is collected." + GameManager.Instance.isBoneCollected);
                 break;
 
             case "Skull":
-                isSkullCollected = true;
-                Debug.Log("Skull is collected.");
+                GameManager.Instance.isSkullCollected = true;
+                //Debug.Log("Skull is collected." + isSkullCollected);
+                // Debug.Log("Bone is collected." + isBoneCollected);
+                //Debug.Log("Flask is collected." + isFlaskCollected);
+                // Debug.Log("--------------------");
+                Debug.Log( "Skull is collected." + GameManager.Instance.isSkullCollected);
                 break;
-
+            
+            case "Flask":
+                GameManager.Instance.isFlaskCollected = true;
+                //Debug.Log("Flask is collected." + isFlaskCollected);
+                //Debug.Log("Bone is collected." + isBoneCollected);
+                //Debug.Log("Skull is collected." + isSkullCollected);
+                //Debug.Log("--------------------");
+                Debug.Log("Flask is collected." + GameManager.Instance.isFlaskCollected);
+                break;
+            
             default:
                 // Optional: Handle any other cases here
+                
                 break;
         }
+        
+        /*
+        if (isBoneCollected && isSkullCollected && isFlaskCollected)
+        {
+            Debug.Log("All tasks are completed.");
+            GameManager.Instance.isWinnable = true;
+        }
+        */
     }
     
     

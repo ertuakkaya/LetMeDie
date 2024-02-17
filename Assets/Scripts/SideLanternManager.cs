@@ -3,6 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// this script is for the side lantern but it is not used in the game
+// ibrahim ayni isi yapan scripti zaten yazmis
 public class SideLanternManager : MonoBehaviour
 {
     

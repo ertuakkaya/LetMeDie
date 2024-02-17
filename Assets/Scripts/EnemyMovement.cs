@@ -1,6 +1,8 @@
 using System;
 using UnityEngine;
 
+// this script is attached to the enemy and it is for the enemy movement. such as following the player and patrolling
+
 public class EnemyMovement : MonoBehaviour
 {
     public Transform playerTransform; // Reference to the player's transform
