@@ -6,25 +6,26 @@ using UnityEngine;
 public class CollectFlasks : MonoBehaviour
 {
     
-    // singleton
+    // singleton pattern
     public static CollectFlasks Instance { get; private set; }
 
 
 
-    [SerializeField] private GameObject player;
-    [SerializeField] private GameObject flask1;
+    //[SerializeField] private GameObject player;
+    //[SerializeField] private GameObject flask1;
     [SerializeField] public bool isFlask1Near = false;
     [SerializeField] private bool isFlask1Collected = false;
     [SerializeField] public ParticleSystem collectEffect;
 
     
-    //
+    // Check if the task is completed
     [SerializeField] private bool isBoneCollected = false;
     [SerializeField] private bool isSkullCollected = false;
     
     
     private void Awake()
     {
+        // singleton pattern
         Instance = this;
     }
 
