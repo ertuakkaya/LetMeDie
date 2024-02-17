@@ -26,7 +26,9 @@ public class GameManager : MonoBehaviour
     [SerializeField] public  bool isBoneCollected = false;
     [SerializeField] public  bool isSkullCollected = false;
     [SerializeField] public  bool isFlaskCollected = false;
-    
+    [SerializeField] public bool isBloodCollected = false; //
+    [SerializeField] public bool isParsementCollected = false; //
+     
     
     
     private void Awake()
@@ -98,21 +100,14 @@ public class GameManager : MonoBehaviour
         
     }
     
-    /*
-    public void CheckWinnable()
-    {
-        if (!isWinnable) return;
-        Debug.Log("isWinnable  : " + isWinnable);
-        portalEffect.Play(); // Activate the portal effect.
-    }
-    */
+   
     
     // Task check
     private void CheckTask()
     {
         //if (!isBoneCollected && !isSkullCollected && !isFlaskCollected) return; // if all tasks are not completed, return.
 
-        if (isFlaskCollected  && isBoneCollected && isSkullCollected)
+        if (isFlaskCollected  && isBoneCollected && isSkullCollected && isParsementCollected)
         {
             // if all tasks are completed, activate the win platform.
             Debug.Log("All tasks are completed.");

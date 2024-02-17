@@ -121,7 +121,15 @@ public class CollectFlasks : MonoBehaviour
                 GameManager.Instance.isFlaskCollected = true;
                 Debug.Log("Flask is collected." + GameManager.Instance.isFlaskCollected);
                 break;
-            
+            case "Blood":
+                GameManager.Instance.isBloodCollected = true;
+                Debug.Log("Blood is collected." + GameManager.Instance.isBloodCollected);
+                BloodController.Instance.ChangeBlood(10); // blood is increased by 10
+                break;
+            case "Parsement":
+                GameManager.Instance.isParsementCollected = true;
+                Debug.Log("Parsement is collected." + GameManager.Instance.isParsementCollected);
+                break;
             default:
                 // Optional: Handle any other cases here
                 
