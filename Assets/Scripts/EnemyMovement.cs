@@ -70,6 +70,18 @@ public class EnemyMovement : MonoBehaviour
         }
     }
     
-    
+    // eðer oyuncu düþmanýn trigger alanýna girerse, caný azalýr
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            BloodController bloodController = BloodController.Instance;
+            if (bloodController != null)
+            {
+                bloodController.ChangeBlood(-10);
+            }
+        }
+    }
     
 }
