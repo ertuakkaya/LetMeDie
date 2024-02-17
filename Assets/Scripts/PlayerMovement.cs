@@ -12,6 +12,7 @@ public class PlayerMovement : MonoBehaviour
     public float dashDuration = 0.2f;  
     private bool isDashing = false;
 
+    private BloodController bloodController;
     [SerializeField] public ParticleSystem dashEffect;
     [SerializeField] public ParticleSystem dashEffect1;
 
@@ -34,29 +35,30 @@ public class PlayerMovement : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        bloodController = BloodController.Instance;
         dashEffect.Stop();
     }
 
     void FixedUpdate()
     {
-        moveHorizontal = Input.GetAxis("Horizontal") * 180;
-        moveVertical = Input.GetAxis("Vertical") * 180;
-        if (!(moveHorizontal == 0 && moveVertical == 0))
-            MoveThePlayer();
-        if (shiftPressed && !isDashing)
+        if (!bloodController.IsFrozen()) 
         {
-            StartCoroutine(Dash());
-            shiftPressed = false;
+            moveHorizontal = Input.GetAxis("Horizontal") * 180;
+            moveVertical = Input.GetAxis("Vertical") * 180;
+            if (!(moveHorizontal == 0 && moveVertical == 0))
+                MoveThePlayer();
+            if (shiftPressed && !isDashing)
+            {
+                StartCoroutine(Dash());
+                shiftPressed = false;
+            }
+            if (!isDashing)
+            {
+                dashEffect.Stop();
+                dashEffect1.Stop();
+            } 
         }
-        if (!isDashing)
-        {
-            dashEffect.Stop();
-            dashEffect1.Stop();
-        }
-    }
-    
-    
-    
+    } 
 
     private void Update()
     {
