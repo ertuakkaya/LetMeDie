@@ -70,6 +70,27 @@ public class EnemyMovement : MonoBehaviour
         }
     }
     
+    // e�er oyuncu d��man�n trigger alan�na girerse, can� azal�r
+
+    private void OnTriggerEnter(Collider other)
+    {
+        
+    }
+
+    private void OnCollisionStay(Collision other)
+    {
+        if (other.gameObject.CompareTag("Player"))
+        {
+            BloodController bloodController = BloodController.Instance;
+            if (bloodController != null)
+            {
+                bloodController.ChangeBlood(-1);
+                //Debug.Log("Player entered the enemy's trigger area. -10 blood is lost.");
+            }
+        }
+    }
+    
+    
     
     
 }
