@@ -9,7 +9,7 @@ EditorBuildSettings:
     path: Assets/Scenes/Dilara.unity
     guid: 029110aaabc4d2e4db7d4269e285ee85
   - enabled: 1
-    path: Assets/Scenes/DilaraCopy.unity
+    path: Assets/Scenes/Main_menu.unity
     guid: 9979ee7bed043ac4bafdf66f9e9f8678
   - enabled: 1
     path: Assets/Scenes/Ertugrul.unity
@@ -27,6 +27,6 @@ EditorBuildSettings:
     path: Assets/Scenes/GameOverScene.unity
     guid: 6e4928088eb57d1439c15041127026c5
   - enabled: 1
-    path: Assets/Scenes/The end 1.unity
+    path: Assets/Scenes/LastScene.unity
     guid: df9425b0e9d749446b3b043c33a77d5f
   m_configObjects: {}
