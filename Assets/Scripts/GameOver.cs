@@ -12,7 +12,7 @@ public class GameOver : MonoBehaviour
 
    public void MainMenuButton()
     {
-        SceneManager.LoadScene("Dilara");
+        SceneManager.LoadScene("DilaraCopy");
 
 
     } 
