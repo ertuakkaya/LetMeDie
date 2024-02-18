@@ -29,6 +29,11 @@ public class GameManager : MonoBehaviour
     [SerializeField] public bool isBloodCollected = false; //
     [SerializeField] public bool isParsementCollected = false; //
      
+    // Story Canvas
+    [SerializeField] private GameObject storyCanvas;
+    [SerializeField] private bool isStoryCanvasActive = false;
+    
+    
     
     
     private void Awake()
@@ -41,12 +46,19 @@ public class GameManager : MonoBehaviour
         
         isWinnable = false; // Game is not finished at the beginning.
         portalEffect.Stop(); // Portal effect is not active at the beginning.
+        
+        // Story Canvas
+        storyCanvas.SetActive(true);
+        isStoryCanvasActive = true;
+        
+        
     }
 
     private void Update()
     {
        
         CheckTask();
+        ActivateStoryCanvas();
     }
 
     private void FixedUpdate()
@@ -98,6 +110,22 @@ public class GameManager : MonoBehaviour
 
         }
         
+        
+    }
+
+
+    private void ActivateStoryCanvas()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape) && isStoryCanvasActive )
+        {
+            storyCanvas.SetActive(false);
+            isStoryCanvasActive = false;
+        }
+        else if (Input.GetKeyDown(KeyCode.Escape) && !isStoryCanvasActive)
+        {
+            storyCanvas.SetActive(true);
+            isStoryCanvasActive = true;
+        }
         
     }
     
