@@ -26,6 +26,11 @@ public class AudioScriptMain : MonoBehaviour
     public AudioClip dashSound;  // Dash Audio
     
     
+    // Lantern Collect Audio
+    public AudioSource LanternCollectAudioSource;
+    public AudioClip lanternCollectSound;  // Lantern Collect Audio
+    
+    
     private void Awake()
     {
         // Singleton

@@ -52,6 +52,7 @@ public class CollectLantern : MonoBehaviour
 
         if (isLanterNear && Input.GetKeyDown(KeyCode.E) && !isLanterCollected)
         {
+            AudioScriptMain.Instance.LanternCollectAudioSource.PlayOneShot(AudioScriptMain.Instance.lanternCollectSound); ////
             isLanterCollected = true;
             CheckLanterCollected();
             lanternCanvas.GetComponent<Canvas>().enabled = false;
