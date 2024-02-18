@@ -127,11 +127,14 @@ public class GameManager : MonoBehaviour
         {
             storyCanvas.SetActive(false);
             isStoryCanvasActive = false;
+            Time.timeScale = 1; // Game is resumed.
         }
         else if (Input.GetKeyDown(KeyCode.Escape) && !isStoryCanvasActive)
         {
             storyCanvas.SetActive(true);
             isStoryCanvasActive = true;
+            Time.timeScale = 0; // Game is paused.
+            
         }
         
     }

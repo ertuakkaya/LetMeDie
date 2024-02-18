@@ -33,6 +33,9 @@ public class CollectLantern : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        
+        Time.timeScale = 0; // Game (time) is stopped at the beginning of the game
+        
         lanterFlameEffect.Stop();
         player.GetComponent<Light>().enabled = false;
         lanternCanvas.GetComponent<Canvas>().enabled = false;
@@ -52,7 +55,11 @@ public class CollectLantern : MonoBehaviour
 
         if (isLanterNear && Input.GetKeyDown(KeyCode.E) && !isLanterCollected)
         {
+            
+            // Play the sound when the lantern is collected
             AudioScriptMain.Instance.LanternCollectAudioSource.PlayOneShot(AudioScriptMain.Instance.lanternCollectSound); ////
+            
+            
             isLanterCollected = true;
             CheckLanterCollected();
             lanternCanvas.GetComponent<Canvas>().enabled = false;
