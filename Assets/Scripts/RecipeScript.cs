@@ -27,6 +27,10 @@ public class RecipeScript : MonoBehaviour
     public TextMeshProUGUI taskText4;
     
     
+    // Mission Paper 
+    [SerializeField] private bool isMissionPaperCollected = false;
+    
+    
     // Dilara
     /*
     private void OnTriggerEnter(Collider other)
@@ -50,7 +54,7 @@ public class RecipeScript : MonoBehaviour
 
     private void Start()
     {
-        
+        MissionCanvas.enabled = false;
     }
 
 
@@ -82,14 +86,20 @@ public class RecipeScript : MonoBehaviour
 
     private void MissionCanvasControl()
     {
+        if (!isMissionPaperCollected)
+        {
+            MissionCanvas.enabled = false;
+            CanvasAcik = false;
+        }
+        
         // if canvas is not active, when player press F, canvas will be active
-        if (Input.GetKeyDown(KeyCode.F) && !CanvasAcik)
+        if (Input.GetKeyDown(KeyCode.F) && !CanvasAcik ) // if  F key is pressed and canvas is not active
         {
             MissionCanvas.enabled = true;
             CanvasAcik = true;
             
         }
-        else if (Input.GetKeyDown(KeyCode.F) && CanvasAcik)
+        else if (Input.GetKeyDown(KeyCode.F ) && CanvasAcik) // if F key is pressed and canvas is active
         {
             CanvasAcik = false;
             MissionCanvas.enabled = false;
