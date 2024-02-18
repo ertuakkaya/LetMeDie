@@ -20,7 +20,9 @@ public class CollectBloodEffect : MonoBehaviour
 
     void Start()
     {
+        
         bloodCollectEffect.Stop();
+        CollectLantern.Instance.lanternCanvas.GetComponent<Canvas>().enabled = false;
     }
 
     // Update is called once per frame
@@ -31,18 +33,21 @@ public class CollectBloodEffect : MonoBehaviour
             isBLoodCollected = true;
 
             bloodCollectEffect.Play();
-
-            UnVisFlask();
-
+            
+            Invoke("StopEffect", 2f); // stop the effect after 2 seconds
+            
+            CheckTask();  ///
+            
             bloodHealEffect.Stop();
         }
     }
 
     private void OnTriggerStay(Collider other)
     {
-        if (other.gameObject.CompareTag("Player"))
+        if (other.gameObject.CompareTag("Player") && !isBLoodCollected)
         {
             isBloodNear = true;
+            CollectLantern.Instance.lanternCanvas.GetComponent<Canvas>().enabled = true;
         }
     }
 
@@ -51,17 +56,10 @@ public class CollectBloodEffect : MonoBehaviour
         if (other.gameObject.CompareTag("Player"))
         {
             isBloodNear = false;
+            CollectLantern.Instance.lanternCanvas.GetComponent<Canvas>().enabled = false;
         }
     }
-
-    private void UnVisFlask()
-    {
-
-        Invoke("StopEffect", 2f);
-        CheckTask(); 
-
-    }
-
+    
     private void CheckTask()
     {
         switch (gameObject.tag)
@@ -69,6 +67,7 @@ public class CollectBloodEffect : MonoBehaviour
 
           
             case "Blood":
+                isBLoodCollected = true;
                 GameManager.Instance.isBloodCollected = true;
                 Debug.Log("Blood is collected." + GameManager.Instance.isBloodCollected);
                 BloodController.Instance.ChangeBlood(10); // blood is increased by 10
