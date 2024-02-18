@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 
@@ -110,26 +111,31 @@ public class CollectFlasks : MonoBehaviour
             case "Bone":
                 GameManager.Instance.isBoneCollected = true;
                 Debug.Log( "Bone is collected." + GameManager.Instance.isBoneCollected);
+                RecipeScript.Instance.taskText1.fontStyle = FontStyles.Strikethrough;
                 break;
 
             case "Skull":
                 GameManager.Instance.isSkullCollected = true;
                 Debug.Log( "Skull is collected." + GameManager.Instance.isSkullCollected);
+                RecipeScript.Instance.taskText2.fontStyle = FontStyles.Strikethrough;
                 break;
             
             case "Flask":
                 GameManager.Instance.isFlaskCollected = true;
                 Debug.Log("Flask is collected." + GameManager.Instance.isFlaskCollected);
+                RecipeScript.Instance.taskText3.fontStyle = FontStyles.Strikethrough;
+                break;
+            case "Parsement":
+                GameManager.Instance.isParsementCollected = true;
+                Debug.Log("Parsement is collected." + GameManager.Instance.isParsementCollected);
+                RecipeScript.Instance.taskText4.fontStyle = FontStyles.Strikethrough;
                 break;
             case "Blood":
                 GameManager.Instance.isBloodCollected = true;
                 Debug.Log("Blood is collected." + GameManager.Instance.isBloodCollected);
                 BloodController.Instance.ChangeBlood(10); // blood is increased by 10
                 break;
-            case "Parsement":
-                GameManager.Instance.isParsementCollected = true;
-                Debug.Log("Parsement is collected." + GameManager.Instance.isParsementCollected);
-                break;
+            
             default:
                 // Optional: Handle any other cases here
                 
