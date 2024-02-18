@@ -12,11 +12,13 @@ public class AudioScriptMain : MonoBehaviour
     
     // Collect Audio Source
     public AudioSource CollectAudioSource;
-    
-   
     public AudioClip collectParsementSound;  // Item Collect Audio
     public AudioClip bloodDrinkSound;  // Blood Drink Audio
     
+    
+    // End Gate (Portal) Audio Source
+    public AudioSource PortalSoundAudioSource;
+    public AudioClip portalSound;  // End Gate Audio
 
     private void Awake()
     {

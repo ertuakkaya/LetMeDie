@@ -107,6 +107,7 @@ public class GameManager : MonoBehaviour
             //Debug.Log("All tasks are completed.");
             isWinnable = true;
             portalEffect.Play(); // Activate the portal effect.
+            AudioScriptMain.Instance.musicSource.PlayOneShot(AudioScriptMain.Instance.portalSound); // Play the portal sound.
 
         }
         
