@@ -95,7 +95,7 @@ public class GameManager : MonoBehaviour
         if (!( bcon.IsAlive() ) && !( bcon.IsFrozen() ) && isWinnable )
         {
             //TODO : Oyunu Kazand�.
-            SceneManager.LoadScene("The end 1"); // Load the win scene.
+            SceneManager.LoadScene("LastScene"); // Load the win scene.
             
         }
     } 
