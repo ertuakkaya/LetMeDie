@@ -126,6 +126,7 @@ public class CollectFlasks : MonoBehaviour
                 RecipeScript.Instance.taskText3.fontStyle = FontStyles.Strikethrough;
                 break;
             case "Parsement":
+                AudioScriptMain.Instance.musicSource.PlayOneShot(AudioScriptMain.Instance.collectParsementSound); ////
                 GameManager.Instance.isParsementCollected = true;
                 Debug.Log("Parsement is collected." + GameManager.Instance.isParsementCollected);
                 RecipeScript.Instance.taskText4.fontStyle = FontStyles.Strikethrough;
