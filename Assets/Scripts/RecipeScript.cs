@@ -86,14 +86,14 @@ public class RecipeScript : MonoBehaviour
 
     private void MissionCanvasControl()
     {
-        if (!isMissionPaperCollected)
+        if (!GameManager.Instance.isParsementCollected)
         {
             MissionCanvas.enabled = false;
             CanvasAcik = false;
         }
         
         // if canvas is not active, when player press F, canvas will be active
-        if (Input.GetKeyDown(KeyCode.F) && !CanvasAcik ) // if  F key is pressed and canvas is not active
+        else if (Input.GetKeyDown(KeyCode.F) && !CanvasAcik ) // if  F key is pressed and canvas is not active
         {
             MissionCanvas.enabled = true;
             CanvasAcik = true;
