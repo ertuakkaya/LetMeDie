@@ -13,8 +13,9 @@ public class AudioScriptMain : MonoBehaviour
     // Collect Audio Source
     public AudioSource CollectAudioSource;
     
-    // Parsement Collect Audio
-    public AudioClip collectParsementSound;
+   
+    public AudioClip collectParsementSound;  // Item Collect Audio
+    public AudioClip bloodDrinkSound;  // Blood Drink Audio
     
 
     private void Awake()

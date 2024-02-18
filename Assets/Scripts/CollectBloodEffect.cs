@@ -71,6 +71,7 @@ public class CollectBloodEffect : MonoBehaviour
                 GameManager.Instance.isBloodCollected = true;
                 Debug.Log("Blood is collected." + GameManager.Instance.isBloodCollected);
                 BloodController.Instance.ChangeBlood(10); // blood is increased by 10
+                AudioScriptMain.Instance.musicSource.PlayOneShot(AudioScriptMain.Instance.bloodDrinkSound); // play blood drink sound
                 break;
 
             default:
