@@ -109,24 +109,27 @@ public class CollectFlasks : MonoBehaviour
         {
             
             case "Bone":
+                AudioScriptMain.Instance.musicSource.PlayOneShot(AudioScriptMain.Instance.collectParsementSound); // Play collect sound
                 GameManager.Instance.isBoneCollected = true;
                 Debug.Log( "Bone is collected." + GameManager.Instance.isBoneCollected);
                 RecipeScript.Instance.taskText1.fontStyle = FontStyles.Strikethrough;
                 break;
 
             case "Skull":
+                AudioScriptMain.Instance.musicSource.PlayOneShot(AudioScriptMain.Instance.collectParsementSound); // Play collect sound
                 GameManager.Instance.isSkullCollected = true;
                 Debug.Log( "Skull is collected." + GameManager.Instance.isSkullCollected);
                 RecipeScript.Instance.taskText2.fontStyle = FontStyles.Strikethrough;
                 break;
             
             case "Flask":
+                AudioScriptMain.Instance.musicSource.PlayOneShot(AudioScriptMain.Instance.collectParsementSound); // Play collect sound
                 GameManager.Instance.isFlaskCollected = true;
                 Debug.Log("Flask is collected." + GameManager.Instance.isFlaskCollected);
                 RecipeScript.Instance.taskText3.fontStyle = FontStyles.Strikethrough;
                 break;
             case "Parsement":
-                AudioScriptMain.Instance.musicSource.PlayOneShot(AudioScriptMain.Instance.collectParsementSound); // Play parsement sound
+                AudioScriptMain.Instance.musicSource.PlayOneShot(AudioScriptMain.Instance.collectParsementSound); // Play collect sound
                 GameManager.Instance.isParsementCollected = true;
                 Debug.Log("Parsement is collected." + GameManager.Instance.isParsementCollected);
                 RecipeScript.Instance.taskText4.fontStyle = FontStyles.Strikethrough;
@@ -139,7 +142,6 @@ public class CollectFlasks : MonoBehaviour
             
             default:
                 // Optional: Handle any other cases here
-                
                 break;
         }
         

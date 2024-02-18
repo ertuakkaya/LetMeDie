@@ -10,6 +10,8 @@ public class AudioScriptMain : MonoBehaviour
     
     public AudioSource musicSource;
     
+    // Collect Audio Source
+    public AudioSource CollectAudioSource;
     
     // Parsement Collect Audio
     public AudioClip collectParsementSound;
