@@ -45,14 +45,7 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        /*
-        if (Input.GetKeyDown(KeyCode.T)) // T tusuna basınca portal effecti aktif oluyor.
-        {
-            CheckPortal();
-        }
-        */
-        
-        //CheckWinnable();
+       
         CheckTask();
     }
 
@@ -86,34 +79,26 @@ public class GameManager : MonoBehaviour
         if (!( bcon.IsAlive() ) && !( bcon.IsFrozen() ) )
         {
             //TODO : Oyunu Kazand�.
-            //isWinnable = true;
+            SceneManager.LoadScene("The end 1"); // Load the win scene.
             
         }
     } 
-
-    // simdilik T tusuna basince acılıyor
-    // if player is alive and not frozen, activate the portal effect.
-    public void CheckPortal()
-    {
-        if (!BloodController.Instance.IsAlive() && !BloodController.Instance.IsFrozen() && !isWinnable) return;
-        portalEffect.Play(); // Activate the portal effect.
-        
-    }
     
    
-    
     // Task check
     private void CheckTask()
     {
-        //if (!isBoneCollected && !isSkullCollected && !isFlaskCollected) return; // if all tasks are not completed, return.
-
-        if (isFlaskCollected  && isBoneCollected && isSkullCollected && isParsementCollected)
+        // if all tasks are completed, activate the win platform.
+        if (isParsementCollected && isBloodCollected && isFlaskCollected && isSkullCollected && isBoneCollected)
         {
-            // if all tasks are completed, activate the win platform.
-            Debug.Log("All tasks are completed.");
+            //Debug.Log( "sadsada" + isBoneCollected  +  isSkullCollected + isFlaskCollected + isParsementCollected);
+            //Debug.Log("All tasks are completed.");
             isWinnable = true;
             portalEffect.Play(); // Activate the portal effect.
-        } 
+
+        }
+        
+        
     }
     
     public void TriggerGameOver()
