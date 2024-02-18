@@ -88,7 +88,7 @@ public class GameManager : MonoBehaviour
     {
         var bcon = BloodController.Instance;
         bcon.KillCharacter();
-        if (!( bcon.IsAlive() ) && !( bcon.IsFrozen() ) )
+        if (!( bcon.IsAlive() ) && !( bcon.IsFrozen() ) && isWinnable )
         {
             //TODO : Oyunu Kazand�.
             SceneManager.LoadScene("The end 1"); // Load the win scene.

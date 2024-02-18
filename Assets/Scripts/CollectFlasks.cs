@@ -20,14 +20,6 @@ public class CollectFlasks : MonoBehaviour
     [SerializeField] public bool isFlask1Near = false;
     [SerializeField] private bool isFlask1Collected = false;
     [SerializeField] public ParticleSystem collectEffect;
-
-    
-    /*
-    // Check if the task is completed
-    [SerializeField] private static bool isBoneCollected = false;
-    [SerializeField] private static bool isSkullCollected = false;
-    [SerializeField] private static bool isFlaskCollected = false;
-    */
     
     
     private void Awake()
@@ -90,12 +82,9 @@ public class CollectFlasks : MonoBehaviour
         // it is getting the children of the lantern and disabling them
         gameObject.GetComponent<BoxCollider>().enabled = false; // lanter collider is disabled
         gameObject.GetComponent<MeshRenderer>().enabled = false; // lantern mesh is disabled
-        //gameObject.transform.GetChild(1).gameObject.GetComponent<MeshRenderer>().enabled = false; // candle mesh is disabled
-        //gameObject.transform.GetChild(2).gameObject.GetComponent<Light>().enabled = false; // light is disabled
         
-        Invoke("StopEffect",0.5f);
-        
-        CheckTask();
+        Invoke("StopEffect",0.5f); // stop the effect after 0.5 seconds
+        CheckTask(); // check if the task is completed
         
         
     }
@@ -134,6 +123,8 @@ public class CollectFlasks : MonoBehaviour
                 Debug.Log("Parsement is collected." + GameManager.Instance.isParsementCollected);
                 RecipeScript.Instance.taskText4.fontStyle = FontStyles.Strikethrough;
                 break;
+            
+            // Blood collect is handlin in CollectBloodEffect.cs script . this code is not necessary
             case "Blood":
                 GameManager.Instance.isBloodCollected = true;
                 Debug.Log("Blood is collected." + GameManager.Instance.isBloodCollected);
