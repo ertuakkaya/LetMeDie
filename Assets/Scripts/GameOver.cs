@@ -7,12 +7,12 @@ public class GameOver : MonoBehaviour
 {
    public void RestartBotton()
     {
-        SceneManager.LoadScene(4);
+        SceneManager.LoadScene("Level");
     }
 
    public void MainMenuButton()
     {
-        SceneManager.LoadScene("DilaraCopy");
+        SceneManager.LoadScene("Dilara");
 
 
     } 
