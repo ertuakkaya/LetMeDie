@@ -101,7 +101,7 @@ public class GameManager : MonoBehaviour
     private void CheckTask()
     {
         // if all tasks are completed, activate the win platform.
-        if (isParsementCollected && isBloodCollected && isFlaskCollected && isSkullCollected && isBoneCollected)
+        if (isParsementCollected && isFlaskCollected && isSkullCollected && isBoneCollected)
         {
             //Debug.Log( "sadsada" + isBoneCollected  +  isSkullCollected + isFlaskCollected + isParsementCollected);
             //Debug.Log("All tasks are completed.");
