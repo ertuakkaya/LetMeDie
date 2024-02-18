@@ -37,6 +37,8 @@ public class BloodController : MonoBehaviour
         {
             blood = 0;
             isFrozen = true;
+            GameManager.Instance.TriggerGameOver(); //
+            
         }
 
         slider.value = blood;
