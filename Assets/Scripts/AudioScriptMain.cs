@@ -20,6 +20,12 @@ public class AudioScriptMain : MonoBehaviour
     public AudioSource PortalSoundAudioSource;
     public AudioClip portalSound;  // End Gate Audio
 
+    
+    // Dash Audio Source
+    public AudioSource DashAudioSource;
+    public AudioClip dashSound;  // Dash Audio
+    
+    
     private void Awake()
     {
         // Singleton

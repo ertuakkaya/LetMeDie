@@ -51,6 +51,7 @@ public class PlayerMovement : MonoBehaviour
             {
                 StartCoroutine(Dash());
                 shiftPressed = false;
+                AudioScriptMain.Instance.DashAudioSource.PlayOneShot(AudioScriptMain.Instance.dashSound);
             }
             if (!isDashing)
             {
