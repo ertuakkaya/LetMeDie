@@ -33,7 +33,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject storyCanvas;
     [SerializeField] private bool isStoryCanvasActive = false;
     
-    
+    // Game Win Canvas
+    [SerializeField] private GameObject gameWinCanvas;
     
     
     private void Awake()
@@ -51,6 +52,9 @@ public class GameManager : MonoBehaviour
         storyCanvas.SetActive(true);
         isStoryCanvasActive = true;
         
+        
+        // Game Win Canvas
+        gameWinCanvas.SetActive(false);
         
     }
 
@@ -108,6 +112,8 @@ public class GameManager : MonoBehaviour
             isWinnable = true;
             portalEffect.Play(); // Activate the portal effect.
             AudioScriptMain.Instance.PortalSoundAudioSource.PlayOneShot(AudioScriptMain.Instance.portalSound); // Play the portal sound.
+            gameWinCanvas.SetActive(true); // When all task are complated. Activate the game win canvas. 
+            
 
         }
         
