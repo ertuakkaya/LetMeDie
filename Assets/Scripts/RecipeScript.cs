@@ -31,6 +31,10 @@ public class RecipeScript : MonoBehaviour
     [SerializeField] private bool isMissionPaperCollected = false;
     
     
+    // Book
+    [SerializeField] private GameObject recipeBook;
+    
+    
     // Dilara
     /*
     private void OnTriggerEnter(Collider other)
@@ -55,6 +59,8 @@ public class RecipeScript : MonoBehaviour
     private void Start()
     {
         MissionCanvas.enabled = false;
+        
+        recipeBook.SetActive(false);// at the beginning, don't show book
     }
 
 
@@ -90,6 +96,7 @@ public class RecipeScript : MonoBehaviour
         {
             MissionCanvas.enabled = false;
             CanvasAcik = false;
+            recipeBook.SetActive(false);
         }
         
         // if canvas is not active, when player press F, canvas will be active
@@ -97,12 +104,14 @@ public class RecipeScript : MonoBehaviour
         {
             MissionCanvas.enabled = true;
             CanvasAcik = true;
+            recipeBook.SetActive(true);
             
         }
         else if (Input.GetKeyDown(KeyCode.F ) && CanvasAcik) // if F key is pressed and canvas is active
         {
             CanvasAcik = false;
             MissionCanvas.enabled = false;
+            recipeBook.SetActive(false);
         }
     }
     
