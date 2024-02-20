@@ -11,7 +11,7 @@ public class RecipeScript : MonoBehaviour
     // singleton
     
     public static RecipeScript Instance { get; private set; }
-    
+
     
     
     
@@ -31,7 +31,7 @@ public class RecipeScript : MonoBehaviour
     [SerializeField] private bool isMissionPaperCollected = false;
     
     
-    // Book
+    // Task Book
     [SerializeField] private GameObject recipeBook;
     
     
@@ -96,7 +96,7 @@ public class RecipeScript : MonoBehaviour
         {
             MissionCanvas.enabled = false;
             CanvasAcik = false;
-            recipeBook.SetActive(false);
+            recipeBook.SetActive(false); // don't show book
         }
         
         // if canvas is not active, when player press F, canvas will be active
@@ -104,14 +104,14 @@ public class RecipeScript : MonoBehaviour
         {
             MissionCanvas.enabled = true;
             CanvasAcik = true;
-            recipeBook.SetActive(true);
+            recipeBook.SetActive(true); // show book
             
         }
         else if (Input.GetKeyDown(KeyCode.F ) && CanvasAcik) // if F key is pressed and canvas is active
         {
             CanvasAcik = false;
             MissionCanvas.enabled = false;
-            recipeBook.SetActive(false);
+            recipeBook.SetActive(false); // don't show book
         }
     }
     

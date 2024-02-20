@@ -20,12 +20,13 @@ public class CollectFlasks : MonoBehaviour
     [SerializeField] public bool isFlask1Near = false;
     [SerializeField] private bool isFlask1Collected = false;
     [SerializeField] public ParticleSystem collectEffect;
-    
+
     
     private void Awake()
     {
         // singleton pattern
         Instance = this;
+        
     }
 
 
@@ -64,6 +65,7 @@ public class CollectFlasks : MonoBehaviour
             CollectLantern.Instance.showCanvas = true;
             isFlask1Near = true;
         }
+        
     }
     
     private void OnTriggerExit(Collider other)
@@ -73,6 +75,8 @@ public class CollectFlasks : MonoBehaviour
             CollectLantern.Instance.lanternCanvas.GetComponent<Canvas>().enabled = false;
             CollectLantern.Instance.showCanvas = false;
             isFlask1Near = false;
+            
+            
         }
     }
     
@@ -85,6 +89,8 @@ public class CollectFlasks : MonoBehaviour
         
         Invoke("StopEffect",0.5f); // stop the effect after 0.5 seconds
         CheckTask(); // check if the task is completed
+        
+         
         
         
     }
@@ -100,34 +106,34 @@ public class CollectFlasks : MonoBehaviour
             case "Bone":
                 AudioScriptMain.Instance.musicSource.PlayOneShot(AudioScriptMain.Instance.collectParsementSound); // Play collect sound
                 GameManager.Instance.isBoneCollected = true;
-                Debug.Log( "Bone is collected." + GameManager.Instance.isBoneCollected);
+                //Debug.Log( "Bone is collected." + GameManager.Instance.isBoneCollected);
                 RecipeScript.Instance.taskText1.fontStyle = FontStyles.Strikethrough;
                 break;
 
             case "Skull":
                 AudioScriptMain.Instance.musicSource.PlayOneShot(AudioScriptMain.Instance.collectParsementSound); // Play collect sound
                 GameManager.Instance.isSkullCollected = true;
-                Debug.Log( "Skull is collected." + GameManager.Instance.isSkullCollected);
+                //Debug.Log( "Skull is collected." + GameManager.Instance.isSkullCollected);
                 RecipeScript.Instance.taskText2.fontStyle = FontStyles.Strikethrough;
                 break;
             
             case "Flask":
                 AudioScriptMain.Instance.musicSource.PlayOneShot(AudioScriptMain.Instance.collectParsementSound); // Play collect sound
                 GameManager.Instance.isFlaskCollected = true;
-                Debug.Log("Flask is collected." + GameManager.Instance.isFlaskCollected);
+                //Debug.Log("Flask is collected." + GameManager.Instance.isFlaskCollected);
                 RecipeScript.Instance.taskText3.fontStyle = FontStyles.Strikethrough;
                 break;
             case "Parsement":
                 AudioScriptMain.Instance.musicSource.PlayOneShot(AudioScriptMain.Instance.collectParsementSound); // Play collect sound
                 GameManager.Instance.isParsementCollected = true;
-                Debug.Log("Parsement is collected." + GameManager.Instance.isParsementCollected);
+                //Debug.Log("Parsement is collected." + GameManager.Instance.isParsementCollected);
                 RecipeScript.Instance.taskText4.fontStyle = FontStyles.Strikethrough;
                 break;
             
             // Blood collect is handlin in CollectBloodEffect.cs script . this code is not necessary
             case "Blood":
                 GameManager.Instance.isBloodCollected = true;
-                Debug.Log("Blood is collected." + GameManager.Instance.isBloodCollected);
+                //Debug.Log("Blood is collected." + GameManager.Instance.isBloodCollected);
                 BloodController.Instance.ChangeBlood(10); // blood is increased by 10
                 break;
             
